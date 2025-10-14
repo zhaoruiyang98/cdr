@@ -1,0 +1,45 @@
+[project]
+name = "cdr"
+version = "0.1.0"
+description = "cosmic density field reconstruction"
+readme = "README.md"
+authors = [
+    { name = "zhaoruiyang98", email = "zhaoruiyang19@mails.ucas.edu.cn" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "cosmoprimo[camb] @ git+https://github.com/cosmodesi/cosmoprimo",
+    "mpi-pytest>=2025.7",
+    "mpi4py>=4.1.1",
+    "numpy>=2.2.6",
+    "pmesh>=0.1.59",
+    "scipy>=1.15.3",
+]
+
+[build-system]
+requires = ["uv_build>=0.9.2,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 120
+
+[tool.uv.sources]
+cosmoprimo = { git = "https://github.com/cosmodesi/cosmoprimo" }
+pypower = { git = "https://github.com/cosmodesi/pypower" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning:cosmoprimo.*:"]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.0.0",
+    "ipython>=8.37.0",
+    "matplotlib>=3.10.7",
+    "pypower>=1.0.0",
+    "scienceplots>=2.1.1",
+    "sympy>=1.14.0",
+]
+
+[tool.ruff.lint]
+ignore = ["E731"]

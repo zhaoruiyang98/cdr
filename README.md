@@ -9,7 +9,7 @@ If you are a mac user with Apple silicon, the easiest way to go is to install gc
 brew install gcc@15
 HOMEBREW_CC=gcc-15 HOMEBREW_CXX=g++-15 brew install open-mpi --build-from-source
 ```
-Note that, open-mpi has to be built from source with environment variable `HOMEBREW_CC` set to `gcc-15` (surely `gcc-16`, `gcc-17`, ... released in the future should also work). This is because by default homebrew installs a pre-compiled open-mpi library built with Apple Clang, which is not able to build the pfft-python library used by cdr.
+Note that, open-mpi has to be built from source with environment variable `HOMEBREW_CC` set to `gcc-15` (surely using `gcc-16`, `gcc-17`, ... released in the future should also work). This is because by default homebrew installs a pre-compiled open-mpi library built with Apple Clang, which is not able to build the pfft-python library used by cdr.
 
 Then you can use pip to install this package
 ```bash

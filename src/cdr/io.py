@@ -132,6 +132,12 @@ def mpi_read_quijote_field(filename, block: str, ptype: int, comm: MPI.Intracomm
         array *= np.sqrt(header["time"])
     if block == "POS" and array.dtype == np.float64:
         array = array.astype(np.float32)
+    # convert POS to Mpc/h unit, following https://quijote-simulations.readthedocs.io/en/latest/snapshots.html
+    if block == "POS":
+        array = array / 1e3
+    # IDs starting from zero
+    if block == "ID":
+        array = array - 1
     return array
 
 
